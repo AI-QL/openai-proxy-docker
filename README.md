@@ -1,5 +1,7 @@
 # OpenAI Proxy Docker
-openai-proxy-docker provides an OpenAI API proxy server image by [Docker](https://hub.docker.com/r/aiql/openai-proxy-docker)
+
+OpenAI will block API access in some countries from July 2024.  
+The `openai-proxy-docker` provides an OpenAI API proxy server image by [Docker](https://hub.docker.com/r/aiql/openai-proxy-docker)
 
 
 ## How to use
