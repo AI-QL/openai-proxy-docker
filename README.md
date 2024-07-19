@@ -5,7 +5,7 @@ The `openai-proxy-docker` provides an OpenAI API proxy server image by [Docker](
 
 ## Demo
 
-- #### API demo http://api.aiql.com
+- #### API demo https://api.aiql.com
 - #### UI demo [ChatUI Lite](https://github.com/aiql-community/chat-ui-lite)
 
 ### For detailed usage of OpenAI API, please check:
@@ -73,11 +73,11 @@ Fork this repo and set `DOCKERHUB_USERNAME` and `DOCKERHUB_TOKEN` in your secret
 
 Normally, the step should be:
 
-1. [Fork](https://github.com/aiql-community/openai-proxy-docker/fork)
-2. Settings
-3. Secrets and variables
-4. Actions
-5. New repository secret
+- [Fork](https://github.com/aiql-community/openai-proxy-docker/fork)
+- Settings
+- - Secrets and variables
+- - - Actions
+- - - - New repository secret
 
 ## Docker Compose
 
