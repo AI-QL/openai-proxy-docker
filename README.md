@@ -5,11 +5,13 @@ The `openai-proxy-docker` provides an OpenAI API proxy server image by [Docker](
 
 ## Demo
 
-http://api.aiql.com
+- #### API demo http://api.aiql.com
+- #### UI demo [ChatUI Lite](https://github.com/aiql-community/chat-ui-lite)
 
-## UI Demo
+### For detailed usage of OpenAI API, please check:
+- #### [OpenAI API Reference](https://platform.openai.com/docs/api-reference/introduction) (official docs)
+- #### [RESTful OpenAPI](https://api-ui.aiql.com) (provided by AIQL)
 
-[ChatUI Lite](https://github.com/aiql-community/chat-ui-lite)
 
 ## How to use
 Just:
@@ -23,8 +25,6 @@ Then, you can use it by ```YOURIP:9017```
 > For example, the proxied OpenAI Chat Completion API will be: ```YOURIP:9017/v1/chat/completions```
 > 
 > It should be the same as ```api.openai.com/v1/chat/completions```
-
-For detailed usage of OpenAI API, please check: [OpenAI API Reference](https://platform.openai.com/docs/api-reference/introduction) or [RESTful OpenAPI](https://petstore.swagger.io/?url=https://cdn.jsdelivr.net/gh/openai/openai-openapi@master/openapi.yaml)
 
 You can change default port and default target by setting `-e` in docker, which means that you can use it for any backend followed by OpenAPI format:
 | Parameter | Default Value |
@@ -65,6 +65,20 @@ If everything is OK, check the docker by:
 docker build .
 ```
 
+## Docker Push
+
+If you want to maintaine your own docker image, refer to github [Actions](./.github/workflows/docker-image.yml)
+
+Fork this repo and set `DOCKERHUB_USERNAME` and `DOCKERHUB_TOKEN` in your secrets
+
+Normally, the step should be:
+
+1. [Fork](https://github.com/aiql-community/openai-proxy-docker/fork)
+2. Settings
+3. Secrets and variables
+4. Actions
+5. New repository secret
+
 ## Docker Compose
 
 This is an example if you want to use this for your own domain with HTTPS:
@@ -73,8 +87,6 @@ This is an example if you want to use this for your own domain with HTTPS:
   > e.g.: the proxied OpenAI Chat Completion API will be: `api.example.com/v1/chat/completions`
 
 ```DOCKERFILE
-version: '3.5'
-
 services:
   nginx-proxy:
     image: nginxproxy/nginx-proxy
