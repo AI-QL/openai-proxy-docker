@@ -6,7 +6,7 @@ The `openai-proxy-docker` provides an OpenAI API proxy server image by [Docker](
 ## Demo
 
 - #### API demo https://api.aiql.com
-- #### UI demo [ChatUI Lite](https://github.com/aiql-community/chat-ui-lite)
+- #### UI demo [ChatUI](https://github.com/aiql-community/chat-ui)
 
 ### For detailed usage of OpenAI API, please check:
 - #### [OpenAI API Reference](https://platform.openai.com/docs/api-reference/introduction) (official docs)
