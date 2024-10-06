@@ -73,11 +73,8 @@ Fork this repo and set `DOCKERHUB_USERNAME` and `DOCKERHUB_TOKEN` in your secret
 
 Normally, the step should be:
 
-- [Fork](https://github.com/aiql-community/openai-proxy-docker/fork)
-- Settings
-- - Secrets and variables
-- - - Actions
-- - - - New repository secret
+1. [Fork](https://github.com/aiql-community/openai-proxy-docker/fork) this repo
+2. Settings →  Secrets and variables → Actions → New repository secret
 
 ## Docker Compose
 
