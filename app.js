@@ -13,6 +13,7 @@ app.use('/', createProxyMiddleware({
     },
     onProxyRes: function (proxyRes, req, res) {
         proxyRes.headers['Access-Control-Allow-Origin'] = '*';
+        proxyRes.headers['Access-Control-Allow-Headers'] = '*';
     }
 }));
 
