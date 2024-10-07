@@ -32,20 +32,6 @@ You can change default port and default target by setting `-e` in docker, which 
 | PORT | 9017 |
 | TARGET | https://api.openai.com |
 
-## How to maintain
-Use PM2 to scale up this proxy application accross CPU(s):
-- Listing managed processes
-> ```shell
-> docker exec -it <container-id> pm2 list
-> ```
-- Monitoring CPU/Usage of each process
-> ```shell
-> docker exec -it <container-id> pm2 monit
-> ```
-- 0sec downtime reload all applications
-> ```shell
-> docker exec -it <container-id> pm2 reload allk
-> ```
 
 ## How to dev
 
