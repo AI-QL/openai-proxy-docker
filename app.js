@@ -17,7 +17,6 @@ app.use('/', createProxyMiddleware({
           /* handle proxyRes */
           proxyRes.headers['Access-Control-Allow-Origin'] = '*';
           proxyRes.headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization';
-          console.log(proxyRes)
         },
         error: (err, req, res) => {
           /* handle error */
