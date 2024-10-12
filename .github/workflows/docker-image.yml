@@ -24,9 +24,9 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ secrets.DOCKERHUB_USERNAME }}/openai-proxy-docker
+          images: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}
           flavor: |
-            latest=auto
+            latest=true
           tags: |
               type=sha
               type=ref,event=branch
