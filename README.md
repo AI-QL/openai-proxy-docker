@@ -1,7 +1,13 @@
 # OpenAI Proxy Docker
 
-OpenAI will block API access in some countries from July 2024.  
-The `openai-proxy-docker` provides an OpenAI API proxy server image by [Docker](https://hub.docker.com/r/aiql/openai-proxy-docker)
+This repository provides a Dockerized proxy for accessing the OpenAI API, allowing for simplified and streamlined interaction with the model.
+
+With the [Docker image](https://hub.docker.com/r/aiql/openai-proxy-docker), you can easily deploy a proxy instance to serve as a gateway between your application and the OpenAI API, reducing the complexity of API interactions and enabling more efficient development.
+
+## Use case
+
+1. For users who are restricted from direct access to the OpenAI API, particularly those in countries where OpenAI will be blocking API access starting July 2024
+2. For users who need to access private APIs that lack Cross-Origin Resource Sharing (CORS) headers, this solution provides a proxy to bypass CORS restrictions and enable seamless API interactions. 
 
 ## Demo
 
@@ -64,10 +70,27 @@ Normally, the step should be:
 
 ## Docker Compose
 
-This is an example if you want to use this for your own domain with HTTPS:
+### Example 1
+You can apply this approach to other APIs, such as Nvidia NIM:
+- The proxied Nvidia NIM Completion API will be: `YOURIP:9101/v1/chat/completions`
+  > For convenience, a readily available API is provided for those who prefer not to deploy it independently: `https://nvidia.aiql.com/v1/chat/completions`
+
+```DOCKERFILE
+nvidia-proxy:
+  image: aiql/openai-proxy-docker:latest
+  container_name: nvidia-proxy
+  environment:
+    PORT: "9101"
+    TARGET: "https://integrate.api.nvidia.com"
+  restart: always
+  network_mode: host
+```
+
+### Example 2
+You can apply this approach with your own domain over HTTPS:
 - `YOUREMAILADDR@example.com` will be used to get certification notification from ACME server
-- `api.example.com` will be your URL
-  > e.g.: the proxied OpenAI Chat Completion API will be: `api.example.com/v1/chat/completions`
+- The proxied OpenAI Chat Completion API will be: `api.example.com/v1/chat/completions`
+  > `api.example.com` should be replaced by your domain name
 
 ```DOCKERFILE
 services:
