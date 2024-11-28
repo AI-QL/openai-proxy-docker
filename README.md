@@ -1,5 +1,8 @@
 # OpenAI Proxy Docker
 
+[![Docker Pulls](https://img.shields.io/docker/pulls/aiql/openai-proxy-docker.svg)](https://hub.docker.com/r/aiql/openai-proxy-docker)
+[![LICENSE](https://img.shields.io/github/license/AI-QL/openai-proxy-docker)](https://github.com/AI-QL/openai-proxy-docker/blob/main/LICENSE)
+
 This repository provides a Dockerized proxy for accessing the OpenAI API, allowing for simplified and streamlined interaction with the model.
 
 With the [Docker image](https://hub.docker.com/r/aiql/openai-proxy-docker), you can easily deploy a proxy instance to serve as a gateway between your application and the OpenAI API, reducing the complexity of API interactions and enabling more efficient development.
@@ -76,14 +79,15 @@ You can apply this approach to other APIs, such as Nvidia NIM:
   > For convenience, a readily available API is provided for those who prefer not to deploy it independently: `https://nvidia.aiql.com/v1/chat/completions`
 
 ```DOCKERFILE
-nvidia-proxy:
-  image: aiql/openai-proxy-docker:latest
-  container_name: nvidia-proxy
-  environment:
-    PORT: "9101"
-    TARGET: "https://integrate.api.nvidia.com"
-  restart: always
-  network_mode: host
+services:
+  nvidia-proxy:
+    image: aiql/openai-proxy-docker:latest
+    container_name: nvidia-proxy
+    environment:
+      PORT: "9101"
+      TARGET: "https://integrate.api.nvidia.com"
+    restart: always
+    network_mode: host
 ```
 
 ### Example 2
