@@ -1,17 +1,22 @@
 {
   "name": "@ai-ql/api-proxy",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "OpenAI API Proxy by Docker",
-  "main": "app.js",
+  "main": "index.js",
   "keywords": [],
   "author": "",
   "license": "Apache-2.0",
+  "type": "module",
+  "files": [
+    "README.md",
+    "index.js"
+  ],
   "bin": {
-    "openai-proxy": "cli.js"
+    "openai-proxy": "index.js"
   },
   "scripts": {
-    "start": "node app.js",
-    "build": "shx chmod +x cli.js",
+    "start": "node index.js",
+    "build": "shx chmod +x index.js",
     "prepare": "npm run build",
     "update-deps": "npx npm-check-updates -u && npm install"
   },
