@@ -22,24 +22,41 @@ With the [Docker image](https://hub.docker.com/r/aiql/openai-proxy-docker), you 
 - #### [RESTful OpenAPI](https://api-ui.aiql.com) (provided by AIQL)
 
 
-## How to use
-Just:
+## Run remotely via Docker
+
+Execute this command to start the proxy with default settings:
 
 ```shell
 sudo docker run -d -p 9017:9017 aiql/openai-proxy-docker:latest
 ```
 
-Then, you can use it by ```YOURIP:9017```
+Then, you can access it by ```YOURIP:9017```
 
 > For example, the proxied OpenAI Chat Completion API will be: ```YOURIP:9017/v1/chat/completions```
 > 
 > It should be the same as ```api.openai.com/v1/chat/completions```
 
 You can change default port and default target by setting `-e` in docker, which means that you can use it for any backend followed by OpenAPI format:
+
 | Parameter | Default Value |
-| ----- | ----- |
-| PORT | 9017 |
-| TARGET | https://api.openai.com |
+| --------- | ------------- |
+| PORT      | 9017          |
+| TARGET    | https://api.openai.com |
+
+
+## Run locally via NPX
+
+Execute this command to start the proxy with default settings:
+
+```shell
+npx @ai-ql/api-proxy
+```
+
+To skip installation prompts and specify parameters:
+
+```shell
+npx -y @ai-ql/api-proxy --target="https://api.deepinfra.com/v1/openai" --port="9019"
+```
 
 
 ## How to dev

@@ -25,7 +25,10 @@ function createProxyApp(target) {
             },
             error: (err, req, res) => {
                 console.error('Proxy error:', err);
-                res.status(500).send('Proxy error');
+                res.status(500).json({
+                    error: 'Proxy Error',
+                    message: err.message
+                });
             },
         },
     }));
