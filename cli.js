@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 const createProxyApp = require('./core');
 const { defaultPort, defaultTarget } = require('./config');
 

@@ -1,6 +1,6 @@
 {
   "name": "@ai-ql/api-proxy",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "OpenAI API Proxy by Docker",
   "main": "app.js",
   "keywords": [],
@@ -11,11 +11,16 @@
   },
   "scripts": {
     "start": "node app.js",
+    "build": "shx chmod +x cli.js",
+    "prepare": "npm run build",
     "update-deps": "npx npm-check-updates -u && npm install"
   },
   "dependencies": {
     "ci": "^2.3.0",
     "express": "^5.1.0",
     "http-proxy-middleware": "^3.0.5"
+  },
+  "devDependencies": {
+    "shx": "^0.4.0"
   }
 }
