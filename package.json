@@ -1,5 +1,5 @@
 {
-  "name": "api-proxy",
+  "name": "@ai-ql/api-proxy",
   "version": "1.4.0",
   "description": "OpenAI API Proxy by Docker",
   "main": "app.js",
