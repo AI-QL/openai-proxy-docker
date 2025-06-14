@@ -6,13 +6,16 @@
   "keywords": [],
   "author": "",
   "license": "Apache-2.0",
+  "bin": {
+    "openai-proxy": "./cli.js"
+  },
   "scripts": {
     "start": "node app.js",
     "update-deps": "npx npm-check-updates -u && npm install"
   },
   "dependencies": {
     "ci": "^2.3.0",
-    "express": "^4.21.0",
-    "http-proxy-middleware": "^3.0.3"
+    "express": "^5.1.0",
+    "http-proxy-middleware": "^3.0.5"
   }
 }
