@@ -1,36 +1,21 @@
-# use the official Bun image
-# see all versions at https://hub.docker.com/r/oven/bun/tags
-FROM oven/bun:1.1.0 AS base
-WORKDIR /usr/src/app
+FROM node:22-alpine AS builder
 
-# install dependencies into temp directory
-# this will cache them and speed up future builds
-FROM base AS install
-RUN mkdir -p /temp/dev
-COPY package.json package-lock.json /temp/dev/
-RUN cd /temp/dev && bun install --frozen-lockfile
+COPY . /app
 
-# install with --production (exclude devDependencies)
-RUN mkdir -p /temp/prod
-COPY package.json package-lock.json /temp/prod/
-RUN cd /temp/prod && bun install --frozen-lockfile --production
+WORKDIR /app
 
-# copy node_modules from temp directory
-# then copy all (non-ignored) project files into the image
-FROM base AS prerelease
-COPY --from=install /temp/dev/node_modules node_modules
-COPY . .
+RUN --mount=type=cache,target=/root/.npm npm install
 
-# [optional] tests & build
+FROM node:22-alpine AS release
+
+WORKDIR /app
+
+COPY --from=builder /app/*.js /app/
+COPY --from=builder /app/package.json /app/package.json
+COPY --from=builder /app/package-lock.json /app/package-lock.json
+
 ENV NODE_ENV=production
-# RUN bun test
-# RUN bun run build
 
-# copy production dependencies and source code into final image
-FROM base AS release
-COPY --from=install /temp/prod/node_modules node_modules
-COPY --from=prerelease /usr/src/app .
+RUN npm ci --ignore-scripts --omit-dev
 
-# run the app
-USER bun
-ENTRYPOINT [ "bun", "run", "app.js" ]
+CMD ["node", "app.js"]
