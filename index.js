@@ -21,7 +21,7 @@ function createProxyApp(target) {
             },
             proxyRes: (proxyRes, req, res) => {
                 proxyRes.headers['Access-Control-Allow-Origin'] = '*';
-                proxyRes.headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization';
+                proxyRes.headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, api_key, Authorization';
             },
             error: (err, req, res) => {
                 console.error('Proxy error:', err);
